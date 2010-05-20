@@ -4,7 +4,7 @@ Donate link:
 Tags: importer, simple tagging
 Requires at least: 3.0
 Tested up to: 3.0
-Stable tag: 0.1
+Stable tag: 0.2
 
 Import Simple Tagging tags into WordPress tags.
 
