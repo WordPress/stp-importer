@@ -33,8 +33,8 @@ class STP_Import extends WP_Importer {
 	function header()  {
 		echo '<div class="wrap">';
 		screen_icon();
-		echo '<h2>'.__('Import Simple Tagging').'</h2>';
-		echo '<p>'.__('Steps may take a few minutes depending on the size of your database. Please be patient.').'<br /><br /></p>';
+		echo '<h2>'.__('Import Simple Tagging', 'stp-importer').'</h2>';
+		echo '<p>'.__('Steps may take a few minutes depending on the size of your database. Please be patient.', 'stp-importer').'<br /><br /></p>';
 	}
 
 	function footer() {
@@ -43,13 +43,13 @@ class STP_Import extends WP_Importer {
 
 	function greet() {
 		echo '<div class="narrow">';
-		echo '<p>'.__('Howdy! This imports tags from Simple Tagging 1.6.2 into WordPress tags.').'</p>';
-		echo '<p>'.__('This has not been tested on any other versions of Simple Tagging. Mileage may vary.').'</p>';
-		echo '<p>'.__('To accommodate larger databases for those tag-crazy authors out there, we have made this into an easy 4-step program to help you kick that nasty Simple Tagging habit. Just keep clicking along and we will let you know when you are in the clear!').'</p>';
-		echo '<p><strong>'.__('Don&#8217;t be stupid - backup your database before proceeding!').'</strong></p>';
+		echo '<p>'.__('Howdy! This imports tags from Simple Tagging 1.6.2 into WordPress tags.', 'stp-importer').'</p>';
+		echo '<p>'.__('This has not been tested on any other versions of Simple Tagging. Mileage may vary.', 'stp-importer').'</p>';
+		echo '<p>'.__('To accommodate larger databases for those tag-crazy authors out there, we have made this into an easy 4-step program to help you kick that nasty Simple Tagging habit. Just keep clicking along and we will let you know when you are in the clear!', 'stp-importer').'</p>';
+		echo '<p><strong>'.__('Don&#8217;t be stupid - backup your database before proceeding!', 'stp-importer').'</strong></p>';
 		echo '<form action="admin.php?import=stp&amp;step=1" method="post">';
 		wp_nonce_field('import-stp');
-		echo '<p class="submit"><input type="submit" name="submit" class="button" value="'.esc_attr__('Step 1').'" /></p>';
+		echo '<p class="submit"><input type="submit" name="submit" class="button" value="'.esc_attr__('Step 1', 'stp-importer').'" /></p>';
 		echo '</form>';
 		echo '</div>';
 	}
@@ -86,14 +86,14 @@ class STP_Import extends WP_Importer {
 
 	function import_posts ( ) {
 		echo '<div class="narrow">';
-		echo '<p><h3>'.__('Reading STP Post Tags&#8230;').'</h3></p>';
+		echo '<p><h3>'.__('Reading STP Post Tags&#8230;', 'stp-importer').'</h3></p>';
 
 		// read in all the STP tag -> post settings
 		$posts = $this->get_stp_posts();
 
 		// if we didn't get any tags back, that's all there is folks!
 		if ( !is_array($posts) ) {
-			echo '<p>' . __('No posts were found to have tags!') . '</p>';
+			echo '<p>' . __('No posts were found to have tags!', 'stp-importer') . '</p>';
 			return false;
 		}
 		else {
@@ -104,12 +104,12 @@ class STP_Import extends WP_Importer {
 
 			add_option('stpimp_posts', $posts);
 			$count = count($posts);
-			echo '<p>' . sprintf( _n('Done! <strong>%s</strong> tag to post relationships were read.', 'Done! <strong>%s</strong> tags to post relationships were read.', $count), $count ) . '<br /></p>';
+			echo '<p>' . sprintf( _n('Done! <strong>%s</strong> tag to post relationships were read.', 'Done! <strong>%s</strong> tags to post relationships were read.', $count, 'stp-importer'), $count ) . '<br /></p>';
 		}
 
 		echo '<form action="admin.php?import=stp&amp;step=2" method="post">';
 		wp_nonce_field('import-stp');
-		echo '<p class="submit"><input type="submit" name="submit" class="button" value="'.esc_attr__('Step 2').'" /></p>';
+		echo '<p class="submit"><input type="submit" name="submit" class="button" value="'.esc_attr__('Step 2', 'stp-importer').'" /></p>';
 		echo '</form>';
 		echo '</div>';
 	}
@@ -117,15 +117,15 @@ class STP_Import extends WP_Importer {
 
 	function import_t2p ( ) {
 		echo '<div class="narrow">';
-		echo '<p><h3>'.__('Adding Tags to Posts&#8230;').'</h3></p>';
+		echo '<p><h3>'.__('Adding Tags to Posts&#8230;', 'stp-importer').'</h3></p>';
 
 		// run that funky magic!
 		$tags_added = $this->tag2post();
 
-		echo '<p>' . sprintf( _n('Done! <strong>%s</strong> tag was added!', 'Done! <strong>%s</strong> tags were added!', $tags_added), $tags_added ) . '<br /></p>';
+		echo '<p>' . sprintf( _n('Done! <strong>%s</strong> tag was added!', 'Done! <strong>%s</strong> tags were added!', $tags_added, 'stp-importer'), $tags_added ) . '<br /></p>';
 		echo '<form action="admin.php?import=stp&amp;step=3" method="post">';
 		wp_nonce_field('import-stp');
-		echo '<p class="submit"><input type="submit" name="submit" class="button" value="'.esc_attr__('Step 3').'" /></p>';
+		echo '<p class="submit"><input type="submit" name="submit" class="button" value="'.esc_attr__('Step 3', 'stp-importer').'" /></p>';
 		echo '</form>';
 		echo '</div>';
 	}
@@ -167,9 +167,9 @@ class STP_Import extends WP_Importer {
 
 	function done ( ) {
 		echo '<div class="narrow">';
-		echo '<p><h3>'.__('Import Complete!').'</h3></p>';
-		echo '<p>' . __('OK, so we lied about this being a 4-step program! You&#8217;re done!') . '</p>';
-		echo '<p>' . __('Now wasn&#8217;t that easy?') . '</p>';
+		echo '<p><h3>'.__('Import Complete!', 'stp-importer').'</h3></p>';
+		echo '<p>' . __('OK, so we lied about this being a 4-step program! You&#8217;re done!', 'stp-importer') . '</p>';
+		echo '<p>' . __('Now wasn&#8217;t that easy?', 'stp-importer') . '</p>';
 		echo '</div>';
 	}
 
@@ -182,6 +182,11 @@ class STP_Import extends WP_Importer {
 $stp_import = new STP_Import();
 
 // add it to the import page!
-register_importer('stp', 'Simple Tagging', __('Import Simple Tagging tags into WordPress tags.'), array($stp_import, 'dispatch'));
+register_importer('stp', 'Simple Tagging', __('Import Simple Tagging tags into WordPress tags.', 'stp-importer'), array($stp_import, 'dispatch'));
 
 } // class_exists( 'WP_Importer' )
+
+function stp_importer_init() {
+    load_plugin_textdomain( 'stp-importer', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+add_action( 'init', 'stp_importer_init' );
