@@ -172,10 +172,6 @@ class STP_Import extends WP_Importer {
 		echo '<p>' . __('Now wasn&#8217;t that easy?', 'stp-importer') . '</p>';
 		echo '</div>';
 	}
-
-	function STP_Import ( ) {
-		// Nothing.
-	}
 }
 
 // create the import object
