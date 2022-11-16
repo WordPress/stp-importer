@@ -32,7 +32,11 @@ if ( class_exists( 'WP_Importer' ) ) {
 class STP_Import extends WP_Importer {
 	function header()  {
 		echo '<div class="wrap">';
-		screen_icon();
+
+		if ( version_compare(get_bloginfo('version'), '3.8.0', '<') ) {
+			screen_icon();
+		}
+
 		echo '<h2>'.__('Import Simple Tagging', 'stp-importer').'</h2>';
 		echo '<p>'.__('Steps may take a few minutes depending on the size of your database. Please be patient.', 'stp-importer').'<br /><br /></p>';
 	}
