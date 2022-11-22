@@ -5,8 +5,8 @@ Plugin URI: http://wordpress.org/extend/plugins/stp-importer/
 Description: Import Simple Tagging tags into WordPress tags.
 Author: wordpressdotorg
 Author URI: http://wordpress.org/
-Version: 0.2
-Stable tag: 0.2
+Version: 0.3
+Stable tag: 0.3
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 */
 
