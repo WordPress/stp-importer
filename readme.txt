@@ -4,7 +4,7 @@ Donate link:
 Tags: importer, simple tagging
 Requires at least: 3.0
 Tested up to: 6.2
-Stable tag: trunk
+Stable tag: 0.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,9 @@ Import Simple Tagging tags into WordPress tags.
 == Screenshots ==
 
 == Changelog ==
+
+= 0.3.1 =
+* Fix the stable tag
 
 = 0.3 =
 * Add support for WordPress 6.2
